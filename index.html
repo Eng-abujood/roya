@@ -2,111 +2,133 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>تحدي الأساطير - النسخة الملحمية ✨</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصداقة✨</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
-        body { margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; 
-               background: radial-gradient(circle at center, #1a0a1a, #000); 
-               font-family: 'Tajawal', sans-serif; overflow: hidden; color: white; }
+        body { 
+            margin: 0; min-height: 100vh; display: flex; justify-content: center; align-items: center; 
+            background: radial-gradient(circle at center, #1a0a1a, #000); 
+            font-family: sans-serif; overflow-x: hidden; color: white; padding: 20px;
+        }
         
-        .glass-card { width: 450px; padding: 40px; background: rgba(255, 255, 255, 0.05);
-                      backdrop-filter: blur(30px); border-radius: 40px; border: 1px solid rgba(255, 255, 255, 0.1);
-                      box-shadow: 0 0 50px rgba(255, 0, 127, 0.2); text-align: center; }
+        .glass-card {
+            width: 100%; 
+            max-width: 450px; /* العرض الأقصى للكمبيوتر */
+            padding: 30px; 
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(30px); 
+            border-radius: 30px; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 50px rgba(255, 0, 127, 0.2); 
+            text-align: center;
+            box-sizing: border-box;
+        }
 
-        input, textarea { width: 80%; padding: 15px; margin: 10px 0; border-radius: 15px; border: none; 
-                          background: rgba(255,255,255,0.1); color: white; text-align: center; font-size: 16px; }
+        h1 { font-size: 1.3rem; color: #fff; margin-bottom: 20px; }
         
-        .btn-magic { display: block; width: 100%; background: linear-gradient(45deg, #ff007f, #ff00d4); 
-                     border: none; padding: 15px; color: white; border-radius: 20px; cursor: pointer; 
-                     margin: 10px 0; font-weight: bold; transition: 0.4s; }
-        .btn-magic:hover { transform: scale(1.05); box-shadow: 0 0 20px #ff007f; }
-        #msg { color: #00d4ff; height: 30px; margin-bottom: 10px; font-weight: bold; }
+        input, textarea { 
+            width: 100%; /* جعلها مرنة داخل الكارد */
+            padding: 12px; 
+            margin: 10px 0; 
+            border-radius: 15px; 
+            border: none; 
+            background: rgba(255,255,255,0.1); 
+            color: white; 
+            text-align: center; 
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .btn-magic {
+            display: block; width: 100%; background: linear-gradient(45deg, #ff007f, #ff00d4); 
+            border: none; padding: 15px; color: white; border-radius: 20px; cursor: pointer; 
+            margin: 10px 0; font-weight: bold; transition: 0.4s;
+        }
+        .btn-magic:hover { transform: scale(1.02); box-shadow: 0 0 20px #ff007f; }
+        #msg { color: #00d4ff; font-size: 1rem; min-height: 30px; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
 <div class="glass-card" id="card">
-    <div id="msg">وججججج منورههههه يدمعتييييي✨😂</div>
+    <div id="msg">وجججج منورهههههه يدمعهههه✨</div>
     <div id="content">
-        <input type="text" id="name" placeholder="اكتبي اسمك لا اقبرككككك😂😂😂">
-        <input type="text" id="date" placeholder="تاريخ تعارفنا (3.5.2026)">
-        <button class="btn-magic" onclick="login()">ايييي بلا متت بلا غيبتتت فوتييي😂😂😂😂😂</button>
+        <input type="text" id="name" placeholder="اكتبي اسمك يدمعتييي">
+        <input type="text" id="pass" placeholder="كلمة السر (1.1.2026)">
+        <button class="btn-magic" onclick="checkLogin()">اييي بلا متت بلا غيبتت فوتيييي🚀</button>
     </div>
 </div>
 
 <script>
     const questions = [
-        { q: "شو أكثر صفة مزعجة فيني؟", type: 'choice', a: ["غروري", "عنادي", "أني دايماً صح"], correctIdx: 1 },
-        { q: "لو كنت أنا كتاب، شو بكون عنواني؟", type: 'text' },
-        { q: "شو أكتر أكلة بتهديني؟", type: 'choice', a: ["شوكولاتة", "قهوة", "بيتزا"], correctIdx: 1 },
-        { q: "لو خيروني بين السفر والبيت، بختار...", type: 'choice', a: ["السفر", "البيت", "السرير"], correctIdx: 0 },
-        { q: "شو اسمي في تليفونك؟", type: 'text' },
-        { q: "كم مرة بغير رأيي باليوم؟", type: 'choice', a: ["مرة", "10 مرات", "أنا اللي بغيره"], correctIdx: 1 },
-        { q: "شو أكثر شي بضحكني؟", type: 'choice', a: ["المقالب", "نكتك البايخة", "أنا"], correctIdx: 0 },
-        { q: "أحلى موقف صار معنا؟", type: 'text' },
-        { q: "شو أكثر كلمة بقولها؟", a: ["عادي", "طيب", "بنشوف"], type: 'choice', correctIdx: 2 },
-        { q: "شو رأيك فيّ بعد كل هالتعب؟", type: 'text' }
+        { q: "شو أكثر صفة مزعجة فيني؟", type: "text" },
+        { q: "لو كنت أنا كتاب، شو بكون عنوانه؟", type: "text" },
+        { q: "شو أكتر أكلة بتهديني؟", type: "choice", a: ["شوكولاتة", "قهوة", "بيتزا"] },
+        { q: "لو ربحت مليون، شو أول شي رح أعمله؟", type: "text" },
+        { q: "شو اسمي في تليفونك؟", type: "text" },
+        { q: "كم مرة بغير رأيي باليوم؟", type: "choice", a: ["مرة", "10 مرات", "أنا اللي بغيره"] },
+        { q: "أحلى موقف صار معنا؟", type: "text" }
     ];
 
     let qIdx = 0;
-    let score = 0;
-    let fullReport = "";
+    let userName = "";
+    let userAnswers = [];
 
-    function login() {
-        if (document.getElementById('date').value === "3.5.2026") {
-            startQuiz();
-        } else {
-            document.getElementById('msg').innerText = "التاريخ غلط والله لقبركككككك احااا 🤡";
-        }
-    }
-
-    function startQuiz() {
-        gsap.to('#card', { opacity: 0, scale: 0.9, duration: 0.5, onComplete: renderQuestion });
-    }
-
-    function renderQuestion() {
-        let q = questions[qIdx];
-        let html = `<h3>${q.q}</h3>`;
+    function checkLogin() {
+        let pass = document.getElementById('pass').value;
+        userName = document.getElementById('name').value;
         
-        if (q.type === 'choice') {
-            html += q.a.map((o, i) => `<button class="btn-magic" onclick="handleChoice(${i})">${o}</button>`).join('');
+        if (pass === "3.5.2026") {
+            loadQuestion();
         } else {
-            html += `<textarea id="txtAns" rows="3" placeholder="اكتبي هون يا دمعتي..."></textarea>
-                     <button class="btn-magic" onclick="handleText()">تم يا قلبي!</button>`;
+            document.getElementById('msg').innerText = "التاريخ غلططط والله لقبرككك 🤡";
         }
-        document.getElementById('content').innerHTML = html;
-        document.getElementById('msg').innerText = "يلا ورجينا شطارتكككك 😂";
-        gsap.to('#card', { opacity: 1, scale: 1, duration: 0.5 });
     }
 
-    function handleChoice(idx) {
-        if (idx === questions[qIdx].correctIdx) { score++; }
-        fullReport += (qIdx + 1) + "- " + questions[qIdx].q + ": " + questions[qIdx].a[idx] + "\n";
+    function loadQuestion() {
+        const card = document.getElementById('card');
+        gsap.to(card, { opacity: 0, scale: 0.95, duration: 0.3, onComplete: () => {
+            if (qIdx < questions.length) {
+                let q = questions[qIdx];
+                let html = `<h3>${q.q}</h3>`;
+                
+                if (q.type === 'choice') {
+                    html += q.a.map(o => `<button class="btn-magic" onclick="saveAnswer('${o}')">${o}</button>`).join('');
+                } else {
+                    html += `<textarea id="txtAns" rows="3" placeholder="اكتبي هون يدمعتيييي"></textarea>
+                             <button class="btn-magic" onclick="saveAnswer(document.getElementById('txtAns').value)">إرسال الجواب</button>`;
+                }
+                document.getElementById('content').innerHTML = html;
+                document.getElementById('msg').innerText = `سؤال ${qIdx + 1} من ${questions.length}`;
+            } else {
+                showFinal();
+            }
+            gsap.to(card, { opacity: 1, scale: 1, duration: 0.3 });
+        }});
+    }
+
+    function saveAnswer(ans) {
+        if (ans.trim() === "") return;
+        userAnswers.push({ q: questions[qIdx].q, a: ans });
         qIdx++;
-        checkEnd();
+        loadQuestion();
     }
 
-    function handleText() {
-        let ans = document.getElementById('txtAns').value;
-        fullReport += (qIdx + 1) + "- " + questions[qIdx].q + ": " + ans + "\n";
-        qIdx++;
-        checkEnd();
+    function showFinal() {
+        document.getElementById('content').innerHTML = `
+            <h1>خلصنا يحارههههه 🏆</h1>
+            <button class="btn-magic" onclick="sendToWhatsApp()">اكبسي هون عشان يوصلوني الاجابات يدمعهههه🚀</button>
+        `;
     }
 
-    function checkEnd() {
-        if (qIdx < questions.length) {
-            renderQuestion();
-        } else {
-            let name = document.getElementById('name').value || "صديقة مجهولة";
-            let textToSend = "تقرير الأسطورة: " + name + "\nالنتيجة: " + score + "/" + questions.length + "\n\nالتفاصيل:\n" + fullReport;
-            let whatsappURL = "https://wa.me/962792863116?text=" + encodeURIComponent(textToSend);
-
-            document.getElementById('content').innerHTML = `
-                <h1>خلصنا يا أسطورة! 🏆</h1>
-                <p>جاوبتي على كل شي، اضغطي تحت للإرسال:</p>
-                <a href="${whatsappURL}" target="_blank" style="display:block; padding:20px; background:#25d366; color:white; text-decoration:none; border-radius:20px; font-weight:bold; margin-top:20px;">إرسال التقرير للواتساب 🚀</a>
-            `;
-        }
+    function sendToWhatsApp() {
+        let fullReport = `تقرير بالاجوبة- ${userName}\n\n`;
+        userAnswers.forEach((item, index) => {
+            fullReport += (index + 1) + ". " + item.q + "\nالجواب: " + item.a + "\n\n";
+        });
+        let url = `https://wa.me/962781707630?text=${encodeURIComponent(fullReport)}`;
+        window.open(url, '_blank');
     }
 </script>
 </body>
