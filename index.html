@@ -3,48 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الصداقة✨</title>
+    <title>اختبار الدمعه</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
-        body { 
-            margin: 0; min-height: 100vh; display: flex; justify-content: center; align-items: center; 
-            background: radial-gradient(circle at center, #1a0a1a, #000); 
-            font-family: sans-serif; overflow-x: hidden; color: white; padding: 20px;
-        }
-        
-        .glass-card {
-            width: 100%; 
-            max-width: 450px; /* العرض الأقصى للكمبيوتر */
-            padding: 30px; 
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(30px); 
-            border-radius: 30px; 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 50px rgba(255, 0, 127, 0.2); 
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        h1 { font-size: 1.3rem; color: #fff; margin-bottom: 20px; }
-        
-        input, textarea { 
-            width: 100%; /* جعلها مرنة داخل الكارد */
-            padding: 12px; 
-            margin: 10px 0; 
-            border-radius: 15px; 
-            border: none; 
-            background: rgba(255,255,255,0.1); 
-            color: white; 
-            text-align: center; 
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-
-        .btn-magic {
-            display: block; width: 100%; background: linear-gradient(45deg, #ff007f, #ff00d4); 
-            border: none; padding: 15px; color: white; border-radius: 20px; cursor: pointer; 
-            margin: 10px 0; font-weight: bold; transition: 0.4s;
-        }
+        body { margin: 0; min-height: 100vh; display: flex; justify-content: center; align-items: center; background: radial-gradient(circle at center, #1a0a1a, #000); font-family: sans-serif; overflow-x: hidden; color: white; padding: 20px; }
+        .glass-card { width: 100%; max-width: 450px; padding: 30px; background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(30px); border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 0 50px rgba(255, 0, 127, 0.2); text-align: center; box-sizing: border-box; }
+        h3 { color: #fff; margin: 10px 0; }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border-radius: 15px; border: none; background: rgba(255,255,255,0.1); color: white; text-align: center; font-size: 16px; box-sizing: border-box; }
+        .btn-magic { display: block; width: 100%; background: linear-gradient(45deg, #ff007f, #ff00d4); border: none; padding: 15px; color: white; border-radius: 20px; cursor: pointer; margin: 10px 0; font-weight: bold; transition: 0.4s; }
         .btn-magic:hover { transform: scale(1.02); box-shadow: 0 0 20px #ff007f; }
         #msg { color: #00d4ff; font-size: 1rem; min-height: 30px; margin-bottom: 10px; }
     </style>
@@ -52,90 +18,141 @@
 <body>
 
 <div class="glass-card" id="card">
-    <div id="msg">وجججج منورهههههه يدمعهههه✨</div>
+    <div id="msg">وجججججج منورههه يدمعنيييييي😂😂😂</div>
     <div id="content">
-        <input type="text" id="name" placeholder="اكتبي اسمك يدمعتييي">
-        <input type="text" id="pass" placeholder="كلمة السر (1.1.2026)">
-        <button class="btn-magic" onclick="checkLogin()">اييي بلا متت بلا غيبتت فوتيييي🚀</button>
+        <input type="text" id="name" placeholder="اكتبي اسمك هووون يخالهههه">
+        <input type="text" id="pass" placeholder="كلمة السر مثال (1.1.2026)">
+        <button class="btn-magic" onclick="checkLogin()">اييي بلا متت بلا غيبتت فوتيييي خلصيني😂</button>
     </div>
 </div>
 
 <script>
     const questions = [
-        { q: "شو أكثر صفة مزعجة فيني اذا في؟🫣🫣", type: "text" },
-        { q: "لو كنت أنا كتاب شو بكون عنوانه؟😁😁", type: "text" },
-        { q: "شو أكتر اكتر كلمة انا بحكيها😅", type: "text"},
-        { q: "شو اكتر لون بحبه🙄🙄", type: "text" },
-        { q: "غيرتي اسمي بتلفونك ولا بعدو😂😂😂", type: "text" },
-        { q: "شو الشي الي خلاكي تكملي معي لحد يومنا هاد😇😇😇", type: "text"},
-        { q: "شو احلى موقف صار بيننا🤭🤭", type: "text" },
-        { q: "هل بتشوفيني انسان ممل🤓🤓🤓", type: "text" },
-        { q: "هل بيوم من الايام اتضايقتي مني و ليش🤣🤣", type: "text" },
-        { q: "هل انحرجتي مني شي مرة و شو كان السبب😜🤣🤣🤣", type: "text" },
-        { q: "تاريخ ميلادي😂😂😂😂", type: "text" },
-        { q: "في يوم من الايام كنتي متضايقة و حكيت معك و رقتي بصراحةةة و شو هو الشي الي كان مزعلك", type: "text" },
-        { q: "لو بيوم من الايام اختفيت فجأة اكتر من يوم شو اول شي ممكن تعمليه", type: "text" },
-       /*{ q: "", type: "text" }*/
-]
+    {
+        q: "هل فيني صفة مزعجة او لا و شو هي🫣🫣",
+        opt1: { words: ["مافي" , "ما فيك"], msg: "ولك دمعتيييييي اننتييي​", btn: "كملي يعيوني💙💙💙" },
+        opt2: { words: ["في" , "فيك"], msg: "ولك شوحححححححح😂😂😂", btn: "الي بعدووو حسبي الله😂😂😂" },
+        opt3: { msg: "ولك حبيييييت😍😍", btn: "كملي يدمعتييي💙💙😂" }
+    },
+    {
+        q: "لو كنت أنا كتاب شو بكون عنوانه？😁😁",
+        opt1: { words: [], msg: "", btn: "" },
+        opt2: { words: [], msg: "", btn: "" },
+        opt3: { msg: "ولك دمعتييييي انتي والله​☺️​❤️‍🩹​", btn: "الي بعدوو يحارههه😂😂😂" }
+    },
+    {
+        q: "شو اكتر كلمة انا بحكيها😅",
+        opt1: { words: ["دمعتي","دمعه","عيوني"], msg: "احسنييي من ضمن الكلمات هاي حافظتيني منيح🤣​🤣​", btn: "كملي كملي لنشووف😂" },
+        opt2: { words: ["حاره","يحاره","يحارتي","يخاله"], msg: "لااااا ولووو قليل بحكيها😂😂", btn: "كملي كملي اندارييي🤣​🤣​" },
+        opt3: { msg: "شوححححححح من متى بحكيها انا كتير🤣​🤣​🤣​🤣​", btn: "الي بعدوو سريعع قبل ما اقبرك🤣​🤣" }
+    },
+    {
+        q: "شو اكتر لون بحبه🙄🙄",
+        opt1: { words: ["احمر","ازرق","بيبي بلو"], msg: "حبيييييت ولك اسطورتيي الدمعههه🤣​​🤣​🤣​", btn: "كملي يدمعتييي🤣​" },
+        opt2: { words: [], msg: "", btn: "" },
+        opt3: { msg: "شوححححححح من وين جبتيلي هاد اللون", btn: "الي بعدوو الي بعدوو🤣​🙂​" }
+    },
+    {
+        q: "غيرتي اسمي بتلفونك ولا بعدو😂😂😂",
+        opt1: { words: ["اه","غيرته",], msg: "ولك دمعنيييي انتي🤣​​🤣​​", btn: "اكبسي هوون🤣​🤣​​​" },
+        opt2: { words: ["لا","ما"], msg: "ولك شوححححححح😂😂", btn: "الي بعدووو حسبي الله😂😂😂" },
+        opt3: { msg: "", btn: "" }
+    },
+    {
+        q: "شو الشي الي خلاكي تكملي معي لحد يومنا هاد😇😇😇",
+        opt1: { words: [], msg: "", btn: "" },
+        opt2: { words: [], msg: "", btn: "" },
+        opt3: { msg: "اوووووه حبيييييت​💓​​💓​🥺​​​​", btn: "الي بعدو دمعنييي💓​​💓💓​​" }
+    },
+    {
+        q: "شو احلى موقف صار بيننا🤭🤭",
+        opt1: { words: [], msg: "", btn: "" },
+        opt2: { words: [], msg: "", btn: "" },
+        opt3: { msg: "حبيييييت​​🤣​🤣​🤣​", btn: "كمليييي يعيونيي​​🤣​" }
+    },
+    {
+        q: "هل بتشوفيني انسان ممل🤓🤓🤓",
+        opt1: { words: [], msg: "", btn: "" },
+        opt2: { words: [], msg: "", btn: "" },
+        opt3: { msg: "وااااااا​​🤣​🤣​​", btn: "البي بعدووووو يباشاا​​🤣​" }
+    },
+    {
+        q: "هل بيوم من الايام اتضايقتي مني و ليش🤣🤣",
+        opt1: { words: ["اه","يعني","شوي","يس"], msg: "وااااا دمعنييي سوريي والله💓​​💓💓", btn: "كملي يعيوني💓​​" },
+        opt2: { words: ["لا","ما","نو"], msg: "ولك والله كلمة دمهتي و عيوني قليلة فيكي💓​​💓💓", btn: "الي بعدو يعيونييي💓​​" },
+        opt3: { msg: "واااااا", btn: "كملي يعيونيييي💓​​" }
+    },
+    {
+        q: "هل انحرجتي مني شي مرة و شو كان السبب😜🤣🤣🤣",
+        opt1: { words: ["اه","شوي","يس"], msg: "ولككك شوححححححححح مش بيننا يدمعتي عاديييي🤣🤣🤣", btn: "استمريييي🤣🤣" },
+        opt2: { words: ["لا","ما","نو"], msg: "حبيييييت بركن عليكييي🤣🤣🤣", btn: "استمرييي يدمعههه🤣" },
+        opt3: { msg: "", btn: "" }
+    },
+    {
+        q: "تاريخ ميلادي😂😂😂😂",
+        opt1: { words: ["19","19.2","19/2"], msg: "ولك يسعدلي الي متذكرررر يناااس😂😂💓​​💓💓", btn: "استمرييي كفو عليكييي😂😂" },
+        opt2: { words: [], msg: "", btn: "" },
+        opt3: { msg: "ولك شوووووووووووووووحح احااااااا والله لقبرككك😂😂😂😂", btn: "كملي حسبي الله بسسسس😂😂" }
+    },
+    {
+        q: "في يوم من الايام كنتي متضايقة و حكيت معك و رقتي بصراحةةة و شو هو الشي الي كان مزعلك",
+        opt1: { words: [], msg: "", btn: "" },
+        opt2: { words: [], msg: "", btn: "" },
+        opt3: { msg: "حبيييييت💓​​💓​🥺", btn: "الي بعدو دمعنيييي💓​​💓​" }
+    },
+    {
+        q: "لو بيوم من الايام اختفيت فجأة اكتر من يوم شو اول شي ممكن تعمليه",
+        opt1: { words: [], msg: "", btn: "" },
+        opt2: { words: [], msg: "", btn: "" },
+        opt3: { msg: "يعيونيييي انتيييي💓​​💓​🥺", btn: "وك استمرييي برافوو😂😂😂😂" }
+    }
+];
 
     let qIdx = 0;
     let userName = "";
     let userAnswers = [];
 
     function checkLogin() {
-        let pass = document.getElementById('pass').value;
-        userName = document.getElementById('name').value;
-        
-        if (pass === "3.5.2026") {
+        if (document.getElementById('pass').value === "3.5.2026") {
+            userName = document.getElementById('name').value;
             loadQuestion();
-        } else {
-            document.getElementById('msg').innerText = "التاريخ غلططط والله لقبرككك 🤡";
-        }
+        } else { document.getElementById('msg').innerText = "التاريخ غلططط والله لقبرككك😂😂😂😂"; }
     }
 
     function loadQuestion() {
-        const card = document.getElementById('card');
-        gsap.to(card, { opacity: 0, scale: 0.95, duration: 0.3, onComplete: () => {
-            if (qIdx < questions.length) {
-                let q = questions[qIdx];
-                let html = `<h3>${q.q}</h3>`;
-                
-                if (q.type === 'choice') {
-                    html += q.a.map(o => `<button class="btn-magic" onclick="saveAnswer('${o}')">${o}</button>`).join('');
-                } else {
-                    html += `<textarea id="txtAns" rows="3" placeholder="اكتبي هون يدمعتيييي"></textarea>
-                             <button class="btn-magic" onclick="saveAnswer(document.getElementById('txtAns').value)">إرسال الجواب</button>`;
-                }
-                document.getElementById('content').innerHTML = html;
-                document.getElementById('msg').innerText = `سؤال ${qIdx + 1} من ${questions.length}`;
-            } else {
-                showFinal();
-            }
-            gsap.to(card, { opacity: 1, scale: 1, duration: 0.3 });
-        }});
+        if (qIdx < questions.length) {
+            let q = questions[qIdx];
+            document.getElementById('msg').innerText = `سؤال ${qIdx + 1} من ${questions.length}`;
+            document.getElementById('content').innerHTML = `<h3>${q.q}</h3><textarea id="txtAns" rows="3"></textarea><button class="btn-magic" onclick="processAnswer()">إرسال الجواب</button>`;
+        } else { showFinal(); }
     }
 
-    function saveAnswer(ans) {
+    function processAnswer() {
+        let ans = document.getElementById('txtAns').value;
         if (ans.trim() === "") return;
+        let q = questions[qIdx];
+        let chosen;
+        if (q.opt1.words.some(w => ans.includes(w))) chosen = q.opt1;
+        else if (q.opt2.words.some(w => ans.includes(w))) chosen = q.opt2;
+        else chosen = q.opt3;
+
+        document.getElementById('msg').innerText = chosen.msg || "إجابة حلوة يا دمعتي! ✨";
+        document.getElementById('content').innerHTML = `<button class="btn-magic" onclick="saveAndNext('${ans}')">${chosen.btn || "كملي يا دمعتي 🚀"}</button>`;
+    }
+
+    function saveAndNext(ans) {
         userAnswers.push({ q: questions[qIdx].q, a: ans });
         qIdx++;
         loadQuestion();
     }
 
     function showFinal() {
-        document.getElementById('content').innerHTML = `
-            <h1>خلصنا يحارههههه 🏆</h1>
-            <button class="btn-magic" onclick="sendToWhatsApp()">اكبسي هون عشان يوصلوني الاجابات يدمعهههه🚀</button>
-        `;
+        document.getElementById('content').innerHTML = `<h1>خلصنا يحارههههه 🏆</h1><button class="btn-magic" onclick="sendToWhatsApp()">اكبسي هون عشان يوصلوني الاجابات يدمعهههه🚀</button>`;
     }
 
     function sendToWhatsApp() {
-        let fullReport = `تقرير بالاجوبة- ${userName}\n\n`;
-        userAnswers.forEach((item, index) => {
-            fullReport += (index + 1) + ". " + item.q + "\nالجواب: " + item.a + "\n\n";
-        });
-        let url = `https://wa.me/962781707630?text=${encodeURIComponent(fullReport)}`;
-        window.open(url, '_blank');
+        let text = `تقرير اجوبة ${userName}\n\n` + userAnswers.map((item, i) => `${i+1}. ${item.q}\nالجواب: ${item.a}`).join("\n\n");
+        window.open(`https://wa.me/962781707630?text=${encodeURIComponent(text)}`, '_blank');
     }
 </script>
 </body>
