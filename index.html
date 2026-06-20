@@ -110,7 +110,7 @@
         q: "ولهون منكون وصلنا للنهاية و ضل شي واحد بس 🌝🤣هل في شي بخاطرك حابة تحكيلي ياه",
         opt1: { words: ["on","mn"], msg: "no", btn: "next" },
         opt2: { words: ["hm","mh"], msg: "no", btn: "next" },
-        opt3: { msg: "ولهون منكون خلصنااا يدمعتييييي💓​​💓​💓​​💓​", btn: "الكبسة الاخير و منكون خالصين🌝♥️" }
+        opt3: { msg: "والله غالية عقلبييي دمعتي يرورووو🥹🥹🩵🫂", btn: "الكبسة الي قبل الاخيرة و منكون خالصين😂😂" }
     }
 ];
 
@@ -153,8 +153,36 @@
     }
 
     function showFinal() {
-        document.getElementById('content').innerHTML = `<h1>خلصنا يحارههههه 🏆</h1><button class="btn-magic" onclick="sendToWhatsApp()">اكبسي هون عشان يوصلوني الاجابات يدمعهههه🚀</button>`;
+        document.getElementById('msg').innerText = "اخر شي و خلص❤️";
+        document.getElementById('content').innerHTML = `
+            <div id="finalBox" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 20px; margin-bottom: 20px; opacity: 0;">
+                <h2 style="color: #ff007f;">❤️رورو دمعتي هاد المسج الك</h2>
+                <p id="typewriter" style="font-size: 1.2rem; line-height: 1.6; color: #fff; min-height: 100px;"></p>
+            </div>
+            <div id="btns" style="display: none;">
+                <button class="btn-magic" onclick="sendToWhatsApp()">ارسال الاجابات كاملة❤️</button>
+            </div>
+        `;
+
+        // تأثير الظهور
+        gsap.to("#finalBox", { opacity: 1, duration: 1.5 });
+
+        // نص الرسالة
+        const text = "ما في شي بالدنيا ممكن يوفيكي حقك لأنك ما كنتي مجرد رفيقة كنتي السند والمكان اللي برتاح فيه من تعب الايام شكراً لأنك شفتيني بكل حالاتي الضعيفة والقوية وما تركتيني شكراً على كل دقيقة ضحكنا فيها سوا وعلى كل مرة كنتي فيها بتفهميني من نظرة عيوني بالوقت الي ما حدا فهمني فيه الله يسعدلي ياكي يرورو و يبعتلك ايام احلى من العسل والله غالية عقلبي انتي و بس والله هلأ بتقدري تضغطي عالزر الي تحت و تبعتيلي الاجابات عالواتس ";
+        let i = 0;
+        
+        function type() {
+            if (i < text.length) {
+                document.getElementById("typewriter").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, 50); // سرعة الكتابة
+            } else {
+                document.getElementById("btns").style.display = "block";
+            }
+        }
+        type();
     }
+    
 
     function sendToWhatsApp() {
         let text = `تقرير اجوبة ${userName}\n\n` + userAnswers.map((item, i) => `${i+1}. ${item.q}\nالجواب: ${item.a}`).join("\n\n");
