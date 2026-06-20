@@ -86,7 +86,7 @@
         q: "هل انحرجتي مني شي مرة و شو كان السبب😜🤣🤣🤣",
         opt1: { words: ["اه","شوي","يس"], msg: "ولككك شوححححححححح مش بيننا يدمعتي عاديييي🤣🤣🤣", btn: "استمريييي🤣🤣" },
         opt2: { words: ["لا","ما","نو"], msg: "حبيييييت بركن عليكييي🤣🤣🤣", btn: "استمرييي يدمعههه🤣" },
-        opt3: { msg: "", btn: "" }
+        opt3: { msg: "🤣🤣🤣🤣🤣🤣", btn: "الي بعدووووو🤣🤣🤣" }
     },
     {
         q: "تاريخ ميلادي😂😂😂😂",
@@ -136,20 +136,33 @@
     function processAnswer() {
         let ans = document.getElementById('txtAns').value;
         if (ans.trim() === "") return;
+        
         let q = questions[qIdx];
         let chosen;
-        if (q.opt1.words.some(w => ans.includes(w))) chosen = q.opt1;
-        else if (q.opt2.words.some(w => ans.includes(w))) chosen = q.opt2;
+        
+        // المنطق المضمون لاختيار الرد
+        if (q.opt1 && q.opt1.words && q.opt1.words.some(w => ans.includes(w))) chosen = q.opt1;
+        else if (q.opt2 && q.opt2.words && q.opt2.words.some(w => ans.includes(w))) chosen = q.opt2;
         else chosen = q.opt3;
 
-        document.getElementById('msg').innerText = chosen.msg || "إجابة حلوة يا دمعتي! ✨";
-        document.getElementById('content').innerHTML = `<button class="btn-magic" onclick="saveAndNext('${ans}')">${chosen.btn || "كملي يا دمعتي 🚀"}</button>`;
+        document.getElementById('msg').innerText = chosen.msg || "حبيييييت✨";
+        
+        // هنا التعديل: نمرر قيمة الـ ans إلى دالة الانتقال مباشرة
+        document.getElementById('content').innerHTML = `
+            <button class="btn-magic" onclick="saveAndNext('${ans.replace(/'/g, "\\'")}')">
+                ${chosen.btn || "كملي يدمعهههه🚀"}
+            </button>`;
     }
 
     function saveAndNext(ans) {
         userAnswers.push({ q: questions[qIdx].q, a: ans });
         qIdx++;
-        loadQuestion();
+        
+        if (qIdx < questions.length) {
+            loadQuestion();
+        } else {
+            showFinal();
+        }
     }
 
     function showFinal() {
